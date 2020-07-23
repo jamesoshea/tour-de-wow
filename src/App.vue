@@ -5,19 +5,9 @@
         <figure></figure>
         <div class="hero__title">
           <h2>{{ factoid.amount }}</h2>
-          <p>{{ factoid.unit }}</p>
+          <p>&nbsp;{{ factoid.unit }}</p>
         </div>
       </div>
-    </section>
-    <section class="content">
-      <article class="content__inner">
-        <h1 class="content__title">Some Happy Little Text</h1>
-        <p>
-          A thin paint will stick to a thick paint. The shadows are just like
-          the highlights, but we're going in the opposite direction. When you do
-          it your way you can go anywhere you choose.
-        </p>
-      </article>
     </section>
   </div>
 </template>
@@ -138,6 +128,7 @@ $assets: (
 
 body {
   margin: 0;
+  overscroll-behavior-y: none;
 }
 
 p {
@@ -191,12 +182,13 @@ figure {
 .hero__title {
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 0 1rem;
+  // padding: 0 1rem;
   width: 100%;
   height: 100%;
   color: white;
@@ -207,47 +199,6 @@ figure {
 
   @media (min-width: 1200px) {
     font-size: 6rem;
-  }
-}
-
-// Content section
-.content {
-  position: relative;
-  margin: 0 auto 8rem;
-  padding: 2rem;
-
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-color: white;
-    z-index: 99;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  }
-}
-
-.content__inner {
-  margin: 0 auto;
-  max-width: 700px;
-
-  > * + * {
-    margin-top: 1.5rem;
-  }
-}
-
-.content__title {
-  font-family: $ff-serif;
-  font-size: 3rem;
-  line-height: 1.25;
-  letter-spacing: -0.125rem;
-  text-align: center;
-
-  @media (min-width: 600px) {
-    font-size: 4rem;
   }
 }
 </style>
