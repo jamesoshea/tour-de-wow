@@ -6,7 +6,7 @@ const {
   COLOR_WATER,
   COLOR_LINE,
   COLOR_POINT_FILL,
-  COLOR_SELECTED_POINT,
+  COLOR_SELECTED_POINT
 } = colorPalette;
 
 const COLORS = {
@@ -15,7 +15,7 @@ const COLORS = {
   LINE: COLOR_LINE,
   POINT: COLOR_SELECTED_POINT,
   POINT_FILL: COLOR_POINT_FILL,
-  WATER: COLOR_WATER,
+  WATER: COLOR_WATER
 };
 
 const POINT_MARKER_ICON_CONFIG = {
@@ -25,14 +25,14 @@ const POINT_MARKER_ICON_CONFIG = {
   strokeColor: COLORS.POINT,
   fillColor: COLORS.POINT_FILL,
   fillOpacity: 0.7,
-  scale: 1,
+  scale: 1
 };
 
 const LINE_SYMBOL_CONFIG = {
   path: "M 0,-2 0,2",
   strokeOpacity: 1,
-  strokeWeight: 1,
-  scale: 1,
+  strokeWeight: 2,
+  scale: 1
 };
 
 const LINE_PATH_CONFIG = {
@@ -43,9 +43,9 @@ const LINE_PATH_CONFIG = {
   icons: [
     {
       icon: LINE_SYMBOL_CONFIG,
-      repeat: "1px",
-    },
-  ],
+      repeat: "1px"
+    }
+  ]
 };
 
 const mapSettings = {
@@ -57,9 +57,9 @@ const mapSettings = {
   backgroundColor: COLORS.LANDSCAPE,
   mapTypeControl: false,
   zoomControlOptions: {
-    style: "SMALL",
+    style: "SMALL"
   },
-  zoom: 7,
+  zoom: 10,
   minZoom: 7,
   maxZoom: 15,
   styles: [
@@ -69,12 +69,12 @@ const mapSettings = {
         { hue: COLORS.LANDSCAPE },
         { saturation: 50.2 },
         { lightness: -34.8 },
-        { gamma: 1 },
-      ],
+        { gamma: 1 }
+      ]
     },
     {
       featureType: "poi",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "road.highway",
@@ -82,8 +82,8 @@ const mapSettings = {
         { hue: COLORS.LANDSCAPE },
         { saturation: -19.8 },
         { lightness: -1.8 },
-        { gamma: 1 },
-      ],
+        { gamma: 1 }
+      ]
     },
     {
       featureType: "road.arterial",
@@ -91,46 +91,46 @@ const mapSettings = {
         { hue: COLORS.LANDSCAPE },
         { saturation: 72.4 },
         { lightness: -32.6 },
-        { gamma: 1 },
-      ],
+        { gamma: 1 }
+      ]
     },
     {
       featureType: "road.local",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "transit",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "administrative.province",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "administrative.locality",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "administrative.province",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "administrative.land_parcel",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "administrative.neighborhood",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "administrative.country",
       elementType: "geometry.stroke",
-      stylers: [{ visibility: "on" }, { color: COLORS.BORDERS }],
+      stylers: [{ visibility: "on" }, { color: COLORS.BORDERS }]
     },
     {
       featureType: "administrative",
       elementType: "labels",
-      stylers: [{ visibility: "off" }],
+      stylers: [{ visibility: "off" }]
     },
     {
       featureType: "water",
@@ -138,10 +138,10 @@ const mapSettings = {
         { hue: COLORS.WATER },
         { saturation: -63.2 },
         { lightness: 38 },
-        { gamma: 1 },
-      ],
-    },
-  ],
+        { gamma: 1 }
+      ]
+    }
+  ]
 };
 
 export { mapSettings, LINE_PATH_CONFIG, POINT_MARKER_ICON_CONFIG };

@@ -29,8 +29,6 @@ import GoogleMapLine from "./GoogleMapLine";
 
 import { mapSettings } from "../constants/mapSettings";
 
-import points from '../data/stageOnePoints.json';
-
 export default {
   components: {
     GoogleMapLoader,
@@ -59,7 +57,7 @@ export default {
       lines: [
         {
           id: "1",
-          path: points
+          path: this.points
         }
       ]
     };

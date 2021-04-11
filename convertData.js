@@ -9,12 +9,10 @@ const points = features.map(({ properties, geometry }) => ({
   elevation: properties.ele,
   lat: geometry.coordinates[1],
   lng: geometry.coordinates[0],
-  time: properties.time,
+  time: properties.time
 }));
 
 fs.writeFileSync(
   "./src/data/stageOnePoints.json",
   JSON.stringify(points, null, 2)
 );
-
-console.log(points[1]);

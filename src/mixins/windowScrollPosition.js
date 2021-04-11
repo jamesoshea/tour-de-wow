@@ -5,10 +5,12 @@ export default function windowScrollPosition() {
     data() {
       return {
         // Initialize scroll position at [0, 0]
-        scrolledToBottom: false,
+        scrolledToBottom: false
       };
     },
     created() {
+      const point = points.shift();
+      this.points.push(point);
       // Only execute this code on the client side, server sticks to [0, 0]
       if (!this.$isServer) {
         this._scrollListener = () => {
@@ -17,11 +19,14 @@ export default function windowScrollPosition() {
             document.body.offsetHeight
           ) {
             if (!this.scrolledToBottom) {
-              console.log("wowowowowowowo");
-              setInterval(() => {
+              const interval = setInterval(() => {
                 const point = points.shift();
+                if (!point) {
+                  clearInterval(interval);
+                  return;
+                }
                 this.points.push(point);
-              }, 5);
+              }, 1);
             }
             // you're at the bottom of the page
             this.scrolledToBottom = true;
@@ -35,6 +40,6 @@ export default function windowScrollPosition() {
     beforeDestroy() {
       // Detach the listener when the component is gone
       window.removeEventListener("scroll", this._scrollListener);
-    },
+    }
   };
 }

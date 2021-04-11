@@ -64,7 +64,6 @@ export default {
   },
   computed: {
     getPosition() {
-      console.log(this.position);
       return this.position;
     },
     totalDistance() {

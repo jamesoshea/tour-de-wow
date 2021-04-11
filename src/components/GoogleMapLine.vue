@@ -18,15 +18,18 @@ export default {
   },
 
   mounted() {
-    console.log(this.path)
-    const { Polyline } = this.google.maps;
-    new Polyline({
-      path: this.path,
+    const line = new this.google.maps.Polyline({
+      path: [this.path[0], this.path[0]],
       map: this.map,
       ...LINE_PATH_CONFIG
     });
+    setInterval(() => {
+      line.setPath(this.path);
+      const lastPoint = this.path[this.path.length - 1]
+      this.map.setCenter(lastPoint)
+    }, 50);
   },
 
-  render() {},
+  render() {}
 };
 </script>
