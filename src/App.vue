@@ -1,6 +1,10 @@
 <template>
   <div>
-    <section class="hero" v-for="(factoid, index) in factoids" :key="factoid.unit">
+    <section
+      class="hero"
+      v-for="(factoid, index) in factoids"
+      :key="factoid.unit"
+    >
       <div class="hero-inner" :id="`section-${index}`">
         <figure></figure>
         <div class="hero__title">
@@ -9,14 +13,26 @@
         </div>
       </div>
     </section>
+    <section style="min-height:100vh;">
+      <TravelMap class="travel-map" :points="points" />
+      <div>wow</div>
+    </section>
   </div>
 </template>
 
 <script>
+import windowScrollPosition from "./mixins/windowScrollPosition";
+import TravelMap from "./components/TravelMap";
+
 export default {
   name: "App",
+  components: {
+    TravelMap
+  },
+  mixins: [windowScrollPosition()],
   data() {
     return {
+      points: [],
       stages: [
         {
           distance: 103.19,
@@ -47,6 +63,10 @@ export default {
     };
   },
   computed: {
+    getPosition() {
+      console.log(this.position);
+      return this.position;
+    },
     totalDistance() {
       return this.stages.reduce((acc, cur) => acc + cur.distance, 0).toFixed(2);
     },
@@ -66,15 +86,15 @@ export default {
         },
         {
           amount: this.totalTime,
-          unit: `hours spent in the saddle`
+          unit: `hours in the saddle`
         },
         {
           amount: this.totalElevationGain,
           unit: `metres of elevation gain`
         },
         {
-          amount: 1.5,
-          unit: `countries visited (what even is Austria?)`
+          amount: 1,
+          unit: `countries accidentally visited`
         },
         {
           amount: 7,
@@ -86,7 +106,7 @@ export default {
         },
         {
           amount: "",
-          unit: "This fucking road"
+          unit: "I didn't like this road"
         },
         {
           amount: "",
@@ -162,6 +182,7 @@ figure {
     &:nth-child(#{$i}) figure {
       background: image($i) no-repeat center center fixed;
       background-size: cover;
+      object-fit: cover;
     }
   }
 }
