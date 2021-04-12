@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const file = fs.readFileSync("./src/data/stage1.geojson");
+const file = fs.readFileSync("./src/data/stage5.geojson");
 const data = JSON.parse(file);
 
 const { features } = data;
@@ -13,6 +13,6 @@ const points = features.map(({ properties, geometry }) => ({
 }));
 
 fs.writeFileSync(
-  "./src/data/stageOnePoints.json",
+  "./src/data/stageFivePoints.json",
   JSON.stringify(points, null, 2)
 );

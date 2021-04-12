@@ -1,4 +1,8 @@
-import points from "../data/stageOnePoints.json";
+import stageOnePoints from "../data/stageOnePoints.json";
+import stageTwoPoints from "../data/stageTwoPoints.json";
+import stageThreePoints from "../data/stageThreePoints.json";
+import stageFourPoints from "../data/stageFourPoints.json";
+import stageFivePoints from "../data/stageFivePoints.json";
 
 export default function windowScrollPosition() {
   return {
@@ -9,6 +13,13 @@ export default function windowScrollPosition() {
       };
     },
     created() {
+      const points = [
+        ...stageOnePoints,
+        ...stageTwoPoints,
+        ...stageThreePoints,
+        ...stageFourPoints,
+        stageFivePoints
+      ];
       const point = points.shift();
       this.points.push(point);
       // Only execute this code on the client side, server sticks to [0, 0]
@@ -18,18 +29,21 @@ export default function windowScrollPosition() {
             window.innerHeight + window.scrollY >=
             document.body.offsetHeight
           ) {
-            if (!this.scrolledToBottom) {
-              const interval = setInterval(() => {
-                const point = points.shift();
-                if (!point) {
-                  clearInterval(interval);
-                  return;
-                }
-                this.points.push(point);
-              }, 1);
-            }
             // you're at the bottom of the page
+            // deal with case where this already happened
+            if (this.scrolledToBottom) {
+              return;
+            }
             this.scrolledToBottom = true;
+            const interval = setInterval(() => {
+              const point = points.splice(0, 50);
+              if (!point) {
+                clearInterval(interval);
+                return;
+              }
+              this.points.push(...point);
+            }, 1);
+            window.removeEventListener("scroll", this._scrollListener);
           }
         };
 

@@ -24,10 +24,12 @@ export default {
       ...LINE_PATH_CONFIG
     });
     setInterval(() => {
-      line.setPath(this.path);
-      const lastPoint = this.path[this.path.length - 1]
-      this.map.setCenter(lastPoint)
-    }, 50);
+      requestAnimationFrame(() => {
+        line.setPath(this.path);
+        const lastPoint = this.path[this.path.length - 1];
+        this.map.setCenter(lastPoint);
+      });
+    }, 60);
   },
 
   render() {}

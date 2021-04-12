@@ -40,20 +40,7 @@ export default {
   },
   data() {
     return {
-      markers: [
-        {
-          id: "a",
-          position: { lat: 3, lng: 101 }
-        },
-        {
-          id: "b",
-          position: { lat: 5, lng: 99 }
-        },
-        {
-          id: "c",
-          position: { lat: 6, lng: 97 }
-        }
-      ],
+      markers: [],
       lines: [
         {
           id: "1",

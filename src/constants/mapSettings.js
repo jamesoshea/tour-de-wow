@@ -74,7 +74,7 @@ const mapSettings = {
     },
     {
       featureType: "poi",
-      stylers: [{ visibility: "off" }]
+      stylers: [{ visibility: "on" }]
     },
     {
       featureType: "road.highway",
@@ -108,11 +108,7 @@ const mapSettings = {
     },
     {
       featureType: "administrative.locality",
-      stylers: [{ visibility: "off" }]
-    },
-    {
-      featureType: "administrative.province",
-      stylers: [{ visibility: "off" }]
+      stylers: [{ visibility: "on" }]
     },
     {
       featureType: "administrative.land_parcel",
@@ -130,7 +126,7 @@ const mapSettings = {
     {
       featureType: "administrative",
       elementType: "labels",
-      stylers: [{ visibility: "off" }]
+      stylers: [{ visibility: "on" }]
     },
     {
       featureType: "water",
