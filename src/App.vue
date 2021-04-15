@@ -15,7 +15,17 @@
     </section>
     <section style="min-height:100vh;">
       <TravelMap class="travel-map" :points="points" />
-      <div>wow</div>
+      <div v-for="(stage, index) in stages" :key="stage.startTown">
+        <div v-if="currentStage > index">
+          <div>
+            Day {{ index + 1 }}: {{ stage.startTown }} to {{ stage.endTown }}
+          </div>
+          <div>
+            {{ stage.heightGain }} meters of climbing in
+            {{ stage.distance }} kilometres
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -35,26 +45,36 @@ export default {
       points: [],
       stages: [
         {
+          endTown: "Chiemsee",
+          startTown: "Munich",
           distance: 103.19,
           heightGain: 1621,
           time: 515
         },
         {
+          endTown: "Schönram",
+          startTown: "Chiemsee",
           distance: 154.52,
           heightGain: 1748,
           time: 447
         },
         {
+          endTown: "Tegernsee",
+          startTown: "Schönram",
           distance: 150.58,
           heightGain: 2182,
           time: 479
         },
         {
+          endTown: "Bad Hindelang",
+          startTown: "Tegernsee",
           distance: 141.25,
           heightGain: 2315,
           time: 448
         },
         {
+          endTown: "Lindau",
+          startTown: "Bad Hindelang",
           distance: 103.85,
           heightGain: 567,
           time: 276
@@ -63,6 +83,21 @@ export default {
     };
   },
   computed: {
+    currentStage() {
+      if (this.points.length < 1090) {
+        return 1;
+      }
+      if (this.points.length < 2890) {
+        return 2;
+      }
+      if (this.points.length < 4840) {
+        return 3;
+      }
+      if (this.points.length < 6620) {
+        return 4;
+      }
+      return 5;
+    },
     getPosition() {
       return this.position;
     },
@@ -100,15 +135,15 @@ export default {
           unit: `Bräustüberls visited`
         },
         {
-          amount: "",
+          amount: "Roßfeldstraße",
           unit: "Germany's highest road"
         },
         {
-          amount: "",
-          unit: "I didn't like this road"
+          amount: "The Tatzelwurm"
+          // unit: "Featuring motorbikes"
         },
         {
-          amount: "",
+          amount: "Riedberg Pass",
           unit: "Germany's highest pass"
         }
       ];
@@ -156,10 +191,6 @@ p {
   line-height: 1.5;
 }
 
-figure {
-  margin: 0;
-}
-
 // Fixed background image element
 figure {
   display: flex;
@@ -168,6 +199,7 @@ figure {
   left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
 }
 
 // Hero section
@@ -208,7 +240,6 @@ figure {
   position: fixed;
   top: 0;
   left: 0;
-  // padding: 0 1rem;
   width: 100%;
   height: 100%;
   color: white;
