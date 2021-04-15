@@ -15,28 +15,26 @@
     </section>
     <section style="min-height:100vh;">
       <TravelMap class="travel-map" :points="points" />
-      <div v-for="(stage, index) in stages" :key="stage.startTown">
-        <div v-if="currentStage > index">
-          <div>
-            Day {{ index + 1 }}: {{ stage.startTown }} to {{ stage.endTown }}
-          </div>
-          <div>
-            {{ stage.heightGain }} meters of climbing in
-            {{ stage.distance }} kilometres
-          </div>
-        </div>
-      </div>
+      <Stage
+        v-for="(stage, index) in displayedStages"
+        :currentStage="currentStage"
+        :index="index"
+        :key="stage.startTown"
+        :stage="stage"
+      />
     </section>
   </div>
 </template>
 
 <script>
 import windowScrollPosition from "./mixins/windowScrollPosition";
+import Stage from "./components/Stage";
 import TravelMap from "./components/TravelMap";
 
 export default {
   name: "App",
   components: {
+    Stage,
     TravelMap
   },
   mixins: [windowScrollPosition()],
@@ -98,6 +96,9 @@ export default {
       }
       return 5;
     },
+    displayedStages() {
+      return this.stages.filter((_, index) => this.currentStage > index);
+    },
     getPosition() {
       return this.position;
     },
@@ -128,7 +129,7 @@ export default {
         },
         {
           amount: 1,
-          unit: `countries accidentally visited`
+          unit: `Austrias accidentally visited`
         },
         {
           amount: 7,
@@ -139,8 +140,8 @@ export default {
           unit: "Germany's highest road"
         },
         {
-          amount: "The Tatzelwurm"
-          // unit: "Featuring motorbikes"
+          amount: "The Tatzelwurm",
+          unit: "Max gradient: 18%"
         },
         {
           amount: "Riedberg Pass",
@@ -154,10 +155,10 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700");
 
-$ff-serif: "Roboto", sans-serif;
+$ff-serif: "Roboto Slab", serif;
 $ff-sans-serif: "Roboto", sans-serif;
-$color-accent: #a9dfbf;
 
 $assets: (
   1: "./assets/images/james-flat.jpg",
@@ -245,7 +246,6 @@ figure {
   color: white;
   font-family: $ff-serif;
   font-size: 8vw;
-  letter-spacing: -0.125rem;
   text-align: center;
 
   @media (min-width: 1200px) {

@@ -23,12 +23,21 @@ export default {
       map: this.map,
       ...LINE_PATH_CONFIG
     });
-    setInterval(() => {
+
+    let previousPathLength;
+
+    const drawLine = setInterval(() => {
+      const pathLength = this.path.length;
       requestAnimationFrame(() => {
         line.setPath(this.path);
         const lastPoint = this.path[this.path.length - 1];
         this.map.setCenter(lastPoint);
       });
+      if (pathLength === previousPathLength) {
+        console.log("wow");
+        clearInterval(drawLine);
+      }
+      previousPathLength = pathLength;
     }, 60);
   },
 
