@@ -144,7 +144,11 @@ export default {
           unit: "Max gradient: 18%"
         },
         {
-          amount: "Riedberg Pass",
+          amount: "Oberjochpass",
+          unit: "Camping at 1178m"
+        },
+        {
+          amount: "Riedbergpass",
           unit: "Germany's highest pass"
         }
       ];
@@ -168,7 +172,8 @@ $assets: (
   5: "./assets/images/james-brauhaus.jpg",
   6: "./assets/images/michael-rossfeldstrasse.jpg",
   7: "./assets/images/james-sudelfeld.jpg",
-  8: "./assets/images/michael-riedberg.jpg"
+  8: "./assets/images/oberjoch.jpg",
+  9: "./assets/images/michael-riedberg.jpg"
 );
 
 @function image($key) {

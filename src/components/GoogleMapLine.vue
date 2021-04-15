@@ -34,7 +34,6 @@ export default {
         this.map.setCenter(lastPoint);
       });
       if (pathLength === previousPathLength) {
-        console.log("wow");
         clearInterval(drawLine);
       }
       previousPathLength = pathLength;
