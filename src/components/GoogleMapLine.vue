@@ -16,7 +16,7 @@ export default {
       required: true
     }
   },
-
+  inject: ["scrolledToBottom"],
   mounted() {
     const line = new this.google.maps.Polyline({
       path: [this.path[0], this.path[0]],
@@ -33,13 +33,13 @@ export default {
         const lastPoint = this.path[this.path.length - 1];
         this.map.setCenter(lastPoint);
       });
-      if (pathLength === previousPathLength) {
+      if (pathLength === previousPathLength && this.scrolledToBottom) {
+        console.log("wpowdvjfdv");
         clearInterval(drawLine);
       }
       previousPathLength = pathLength;
     }, 60);
   },
-
   render() {}
 };
 </script>

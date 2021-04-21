@@ -31,7 +31,7 @@ export default function windowScrollPosition() {
         scrolledToBottom: false
       };
     },
-    created() {
+    mounted() {
       const points = [
         ...stageOnePoints,
         ...stageTwoPoints,

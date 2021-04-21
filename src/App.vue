@@ -1,18 +1,12 @@
 <template>
   <div>
-    <section
-      class="hero"
+    <Cover />
+    <HeroImage
       v-for="(factoid, index) in factoids"
       :key="factoid.unit"
-    >
-      <div class="hero-inner" :id="`section-${index}`">
-        <figure></figure>
-        <div class="hero__title">
-          <h2>{{ factoid.amount }}</h2>
-          <p>&nbsp;{{ factoid.unit }}</p>
-        </div>
-      </div>
-    </section>
+      :factoid="factoid"
+      :index="index"
+    />
     <section style="min-height:100vh;">
       <TravelMap class="travel-map" :points="points" />
       <Stage
@@ -28,12 +22,17 @@
 
 <script>
 import windowScrollPosition from "./mixins/windowScrollPosition";
+
+import Cover from "./components/Cover";
+import HeroImage from "./components/HeroImage";
 import Stage from "./components/Stage";
 import TravelMap from "./components/TravelMap";
 
 export default {
   name: "App",
   components: {
+    Cover,
+    HeroImage,
     Stage,
     TravelMap
   },
@@ -103,14 +102,14 @@ export default {
       return this.position;
     },
     totalDistance() {
-      return this.stages.reduce((acc, cur) => acc + cur.distance, 0).toFixed(2);
+      return this.stages.reduce((acc, cur) => acc + cur.distance, 0).toFixed(0);
     },
     totalElevationGain() {
       return this.stages.reduce((acc, cur) => acc + cur.heightGain, 0);
     },
     totalTime() {
       return (this.stages.reduce((acc, cur) => acc + cur.time, 0) / 60).toFixed(
-        2
+        0
       );
     },
     factoids() {
@@ -153,6 +152,11 @@ export default {
         }
       ];
     }
+  },
+  provide() {
+    return {
+      scrolledToBottom: this.scrolledToBottom
+    };
   }
 };
 </script>
@@ -163,23 +167,6 @@ export default {
 
 $ff-serif: "Roboto Slab", serif;
 $ff-sans-serif: "Roboto", sans-serif;
-
-$assets: (
-  1: "./assets/images/james-flat.jpg",
-  2: "./assets/images/michael-butterfly.jpg",
-  3: "./assets/images/group-tatzelwurm.jpg",
-  4: "./assets/images/michael-austria.jpg",
-  5: "./assets/images/james-brauhaus.jpg",
-  6: "./assets/images/michael-rossfeldstrasse.jpg",
-  7: "./assets/images/james-sudelfeld.jpg",
-  8: "./assets/images/oberjoch.jpg",
-  9: "./assets/images/michael-riedberg.jpg"
-);
-
-@function image($key) {
-  $id: map-get($assets, $key);
-  @return url($id);
-}
 
 // Global styles
 * {
@@ -193,68 +180,17 @@ body {
 
 p {
   font-family: $ff-sans-serif;
-  font-size: 1.25rem;
+  font-size: 4vw;
   line-height: 1.5;
+  opacity: 0.8;
 }
 
-// Fixed background image element
-figure {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-// Hero section
-.hero {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-
-  @each $asset in $assets {
-    $i: index($assets, $asset);
-    &:nth-child(#{$i}) figure {
-      background: image($i) no-repeat center center fixed;
-      background-size: cover;
-      object-fit: cover;
-    }
-  }
-}
-
-.hero-inner {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  clip: rect(0, auto, auto, 0);
-
-  @supports (-webkit-overflow-scrolling: touch) {
-    clip: unset;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-}
-
-.hero__title {
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: white;
-  font-family: $ff-serif;
+h2 {
   font-size: 8vw;
-  text-align: center;
-
-  @media (min-width: 1200px) {
-    font-size: 6rem;
-  }
+  font-family: $ff-serif;
+}
+h3 {
+  font-family: $ff-serif;
+  margin: 0;
 }
 </style>

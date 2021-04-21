@@ -35,11 +35,6 @@ div {
   font-family: $ff-sans-serif;
 }
 
-h3 {
-  font-family: $ff-serif;
-  margin: 0;
-}
-
 .stage {
   opacity: 0.7;
   padding: 0.5em 1em;
