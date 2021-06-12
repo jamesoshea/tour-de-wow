@@ -29,15 +29,24 @@ export default {
 $ff-serif: "Roboto Slab", serif;
 $ff-sans-serif: "Roboto", sans-serif;
 $assets: (
-  1: "../assets/images/james-flat.jpg",
-  2: "../assets/images/michael-butterfly.jpg",
-  3: "../assets/images/group-tatzelwurm.jpg",
-  4: "../assets/images/michael-austria.jpg",
-  5: "../assets/images/james-brauhaus.jpg",
-  6: "../assets/images/michael-rossfeldstrasse.jpg",
-  7: "../assets/images/james-sudelfeld.jpg",
-  8: "../assets/images/oberjoch.jpg",
-  9: "../assets/images/michael-riedberg.jpg"
+  1:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530583/james-flat_k6xf5g.jpg",
+  2:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530583/michael-butterfly_dd2i2n.jpg",
+  3:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530583/group-tatzelwurm_kwj2dr.jpg",
+  4:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530584/michael-austria_c6h5bv.jpg",
+  5:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530583/james-brauhaus_joblfh.jpg",
+  6:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530585/michael-rossfeldstrasse_abh9hd.jpg",
+  7:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530583/james-sudelfeld_lngavh.jpg",
+  8:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530584/oberjoch_nwhsul.jpg",
+  9:
+    "https://res.cloudinary.com/availu-stage/image/upload/c_scale,w_auto/dpr_auto/v1623530585/michael-riedberg_l2ezbu.jpg"
 );
 
 @function image($key) {
