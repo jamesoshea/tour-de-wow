@@ -1,16 +1,10 @@
-import stageOnePoints from "../data/stageOnePoints.json";
-import stageTwoPoints from "../data/stageTwoPoints.json";
-import stageThreePoints from "../data/stageThreePoints.json";
-import stageFourPoints from "../data/stageFourPoints.json";
-import stageFivePoints from "../data/stageFivePoints.json";
-
-let counter = 0;
+import stageOnePoints from "../data/stageOnePointsSmall.json";
+import stageTwoPoints from "../data/stageTwoPointsSmall.json";
+import stageThreePoints from "../data/stageThreePointsSmall.json";
+import stageFourPoints from "../data/stageFourPointsSmall.json";
+import stageFivePoints from "../data/stageFivePointsSmall.json";
 
 const validatePoint = point => {
-  counter++;
-  if (counter % 10 !== 0) {
-    return false;
-  }
   if (!point) {
     return false;
   }
