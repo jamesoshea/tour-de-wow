@@ -27,7 +27,6 @@ export default function windowScrollPosition() {
   return {
     data() {
       return {
-        // Initialize scroll position at [0, 0]
         scrolledToBottom: false
       };
     },
@@ -41,11 +40,12 @@ export default function windowScrollPosition() {
       ].filter(validatePoint);
       const point = points.shift();
       this.points.push(point);
+
       this._scrollListener = () => {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
           // you're at the bottom of the page
-          // deal with case where this already happened
           if (this.scrolledToBottom) {
+            // deal with case where this has already happened
             return;
           }
           this.scrolledToBottom = true;
