@@ -34,7 +34,6 @@ export default {
         this.map.setCenter(lastPoint);
       });
       if (pathLength === previousPathLength && this.scrolledToBottom) {
-        console.log("wpowdvjfdv");
         clearInterval(drawLine);
       }
       previousPathLength = pathLength;
